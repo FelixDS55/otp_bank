@@ -5,8 +5,6 @@ import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -15,9 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 
-public class ServicesTest {
-    @FindBy(className = "34dufh")
-    private WebElement sum;
+public class CreditTest {
     String name = "Иванов Иван Иванович";
     String phoneNumber = "9552360102";
     @BeforeEach
@@ -27,7 +23,6 @@ public class ServicesTest {
     }
     @Test
     void testService(){
-
         step("Выбираем в пункте меню Кредиты в выпадающем окне Кредит наличными", () ->{
             $(".main-menu__item").find(byText("Кредиты")).hover();
             $(".main-submenu").find(byText("Кредит наличными")).click();
@@ -35,11 +30,13 @@ public class ServicesTest {
         });
         step("Установка параметров кредитования", () ->{
             $$("input[inputmode = decimal]").first().sendKeys(Keys.CONTROL + "A");
-//            $$("input[inputmode = decimal]").first().sendKeys(Keys.BACK_SPACE);
             $$("input[inputmode = decimal]").first().sendKeys("50000");
             $$("input[inputmode = decimal]").last().sendKeys(Keys.CONTROL + "A");
-//            $$("input[inputmode = decimal]").last().sendKeys(Keys.BACK_SPACE);
             $$("input[inputmode = decimal]").last().sendKeys("1500000");
+            $(byXpath("//div[@data-el-list = 'list']")).find(byText("5 лет")).click();
+        });
+        step("Проверка правильности отражения условий кредитования",() ->{
+
         });
     }
 

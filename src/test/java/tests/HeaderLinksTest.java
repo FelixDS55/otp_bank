@@ -26,7 +26,6 @@ public class HeaderLinksTest extends BaseTest {
     static Stream<Arguments> checkHeaderLinks(){
         return Stream.of(
                 Arguments.of("EN", List.of("Retail banking", "Small business", "Corporate clients", "About us"))
-//                Arguments.of("RU", List.of("Частным клиентам", "Малому бизнесу и ИП", "Среднему и крупному бизнесу", "Финансовым организациям", "Premium", "Private", "О банке"))
         );
     }
 
@@ -37,5 +36,4 @@ public class HeaderLinksTest extends BaseTest {
         $$(".header-top__link").find(text(locale)).click();
         $$(".header-top__left a").filter(visible).shouldHave(CollectionCondition.texts(buttons));
     }
-
 }
