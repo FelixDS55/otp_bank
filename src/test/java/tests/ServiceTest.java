@@ -1,10 +1,12 @@
 package tests;
 
+import com.codeborne.pdftest.PDF;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 
@@ -38,10 +40,10 @@ public class ServiceTest {
             $(".main-menu").find(byText("Услуги")).click();
             $(".content__left").find(byText("Аренда сейфов")).click();
         });
-        File fileDownloaded = $(byXpath("//a[@href ='/f/retail/safes/pravila_fl.pdf']")).download();
-
-
-
+        step("Скачиваем файл Правила аренды для физ.лиц, проверяем, что автором является Свиридова Ольга", () ->{
+            File fileDownloadedPdf = $(byXpath("//a[@href ='/f/retail/safes/pravila_fl.pdf']")).download();
+            PDF content = new PDF(fileDownloadedPdf);
+            assertThat(content.author).contains("Sviridova Olga");
+        });
     }
-
 }
