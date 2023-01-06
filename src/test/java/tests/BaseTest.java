@@ -14,8 +14,8 @@ public class BaseTest {
     @BeforeAll
     static void setUp(){
         Selenide.clearBrowserCookies();
-//        Configuration.timeout = 5000;
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.timeout = 5000;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.holdBrowserOpen = true;
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
