@@ -20,7 +20,7 @@ public class HeaderLinksTest extends BaseTest {
     @BeforeEach
     void setUpPage(){
         Selenide.open("https://www.otpbank.ru/");
-        Configuration.holdBrowserOpen = true;
+//        Configuration.holdBrowserOpen = true;
     }
 
     static Stream<Arguments> checkHeaderLinks(){

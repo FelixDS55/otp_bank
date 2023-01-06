@@ -16,7 +16,7 @@ public class DepositTest extends BaseTest {
     @BeforeEach
     void setUpPage(){
         Selenide.open("https://www.otpbank.ru/");
-        Configuration.holdBrowserOpen = true;
+//        Configuration.holdBrowserOpen = true;
     }
     @Test
     void depositTestTable(){
