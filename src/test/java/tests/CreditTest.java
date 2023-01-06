@@ -14,8 +14,8 @@ import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 
 public class CreditTest {
-    String name = "Иванов Иван Иванович";
-    String phoneNumber = "9552360102";
+    String name = "Иванов Михаил Петрович";
+    String phoneNumber = "9256582543";
     @BeforeEach
     void setUpPage(){
         Selenide.open("https://www.otpbank.ru/");
@@ -32,13 +32,18 @@ public class CreditTest {
             $$("input[inputmode = decimal]").first().sendKeys(Keys.CONTROL + "A");
             $$("input[inputmode = decimal]").first().sendKeys("50000");
             $$("input[inputmode = decimal]").last().sendKeys(Keys.CONTROL + "A");
-            $$("input[inputmode = decimal]").last().sendKeys("1500000");
+            $$("input[inputmode = decimal]").last().sendKeys("350000");
             $(byXpath("//div[@data-el-list = 'list']")).find(byText("5 лет")).click();
         });
         step("Проверка правильности отражения условий кредитования",() ->{
-
+            $("._17gMlE").shouldHave(text("350 000 ₽"));
+            $("._17gMlE").shouldHave(text("5 лет"));
+            $("._17gMlE").shouldHave(text("от 5.9 %"));
+            $("._17gMlE").shouldHave(text("6 750 ₽"));
+        });
+        step("Проверка заполнения полей заемщика",() ->{
+            $(byXpath("//input[@name = 'fullName']")).setValue(name).pressEnter();
+            $(byXpath("//input[@inputmode= 'tel']")).setValue(phoneNumber).pressEnter();
         });
     }
-
-
 }
