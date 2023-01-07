@@ -89,8 +89,8 @@ allure {
     enableChart: true
   },
   telegram: {
-    token: "5936148191:AAHIFConJnrDcTjiQj_JhNA3jTw4Xp9I6m4",
-    chat: "-1001650029495",
+    token: "5936148191:AAHIFConJnr........",
+    chat: "-1...............",
     replyTo: ""
   }
 }
