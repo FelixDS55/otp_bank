@@ -44,4 +44,57 @@ allure {
 }
 ```
 #### jenkins:
+- Формат сборки в Jenkins: clean test
+- Формат отчета выполнения тестов в jenkins выглядит следующим образом:
+![Jenkins](https://user-images.githubusercontent.com/81954013/211161554-8a30f4e0-a948-41fe-9a9e-32cc3b12e2b7.png)
+
+
 - Для подключения визуальной составляющей Allure указываем Path: build/allure-results. После выполнения сборки нам доступен следующего формата отчет:
+![Allure](https://user-images.githubusercontent.com/81954013/211161438-fee0f0ba-8ad6-4388-9662-d056e10ea9cf.png)
+
+### Подключение отчетов о выполнении прохождения тестов в Allure TestOps
+- В настройках Allure TestOps указываем jenkins_agent_service_acc, Project Write
+- В Jenkins в настойках устанавливаем chexbox Allure: upload results
+- В Path прописываем - build/allure-results
+##### Формат отчета в Allere TestOps:
+![AllureTestOps_1](https://user-images.githubusercontent.com/81954013/211161947-704ebb4f-c68a-4107-b6ed-d84db5b44584.png)
+
+### Подключение отчетов о выполнении прохождения тестов в Allure TestOps
+- В JIRA создаем новую задачу, поименовываем ее
+- В настройках Integrations подключаем Allure Test Ops
+- В Allure Test Ops в меню Test cases выбираем необходимые нам Test cases, Add issues, выбираем наименование нашей задачи в JIRA
+- Переходим в JIRA и получаем отчет следующего вида:
+![JIRA](https://user-images.githubusercontent.com/81954013/211162188-21dbaeab-9a05-42ea-91cf-5dd5120ce06c.png)
+
+## Подключение отчетов о выполнении прохождения тестов в телеграм
+#### В телеграм:
+- создать бота (сохранить токен)
+- добавить бота в нужный чат
+- сделать бота админом
+- получить chat_id при помощи: https://api.telegram.org/bot{secret_bot}/getUpdates
+#### jenkins:
+- В разделе "Сборка" добавить шаг сборки "Create/Update Text File"
+- Указать File Path: notifications/telegram.json
+- Проставить галки для Create at Workspace и Overwrite file
+- Добавить telegram.json:
+```
+{
+  base: {
+    project: "${JOB_BASE_NAME}",
+    environment: "qa.guru",
+    comment: "some comment",
+    reportLink: "${BUILD_URL}",
+    language: "en",
+    allureFolder: "allure-report/",
+    enableChart: true
+  },
+  telegram: {
+    token: "5936148191:AAHIFConJnrDcTjiQj_JhNA3jTw4Xp9I6m4",
+    chat: "-1001650029495",
+    replyTo: ""
+  }
+}
+
+![Telegram](https://user-images.githubusercontent.com/81954013/211162356-e60c12d6-d156-4f86-b25e-18e16696f745.png)
+
+
