@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-public class ServiceTest {
+public class ServiceTest extends BaseTest {
     @BeforeEach
     void setUpPage(){
         Selenide.open("https://www.otpbank.ru/");

@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 
-public class CreditTest {
+public class CreditTest extends BaseTest {
     String name = "Иванов Михаил Петрович";
     String phoneNumber = "9256582543";
     @BeforeEach
