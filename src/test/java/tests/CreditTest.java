@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,6 @@ public class CreditTest extends BaseTest {
     @BeforeEach
     void setUpPage(){
         Selenide.open("https://www.otpbank.ru/");
-//        Configuration.holdBrowserOpen = true;
     }
     @Test
     void testService(){

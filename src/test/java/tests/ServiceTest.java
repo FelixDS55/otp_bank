@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,14 +12,12 @@ import java.io.File;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 public class ServiceTest extends BaseTest {
     @BeforeEach
     void setUpPage(){
         Selenide.open("https://www.otpbank.ru/");
-//        Configuration.holdBrowserOpen = true;
     }
     @Test
     void serviceTest(){
@@ -41,9 +38,10 @@ public class ServiceTest extends BaseTest {
             $(".content__left").find(byText("Аренда сейфов")).click();
         });
         step("Скачиваем файл Правила аренды для физ.лиц, проверяем, что автором является Свиридова Ольга", () ->{
-            File fileDownloadedPdf = $(byXpath("//a[@href ='/f/retail/safes/pravila_fl.pdf']")).download();
+            File fileDownloadedPdf = $(byXpath("//a[@href ='pravila_fl.pdf']")).download();
             PDF content = new PDF(fileDownloadedPdf);
             assertThat(content.author).contains("Sviridova Olga");
         });
     }
 }
+//    File fileDownloadedPdf = $(byXpath("//a[@href ='/f/retail/safes/pravila_fl.pdf']")).download();

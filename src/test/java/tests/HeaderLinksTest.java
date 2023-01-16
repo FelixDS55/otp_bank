@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -20,7 +19,6 @@ public class HeaderLinksTest extends BaseTest {
     @BeforeEach
     void setUpPage(){
         Selenide.open("https://www.otpbank.ru/");
-//        Configuration.holdBrowserOpen = true;
     }
 
     static Stream<Arguments> checkHeaderLinks(){

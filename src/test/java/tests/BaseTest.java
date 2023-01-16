@@ -1,6 +1,6 @@
 package tests;
 
-import Helpers.Attach;
+import helpers.Attach;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -14,10 +14,7 @@ public class BaseTest {
     @BeforeAll
     static void setUp(){
         Selenide.clearBrowserCookies();
-        Configuration.timeout = 5000;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
-//        Configuration.holdBrowserOpen = true;
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
         capabilities.setCapability("browserVersion", "100.0");
