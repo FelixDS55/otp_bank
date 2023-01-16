@@ -38,10 +38,10 @@ public class ServiceTest extends BaseTest {
             $(".content__left").find(byText("Аренда сейфов")).click();
         });
         step("Скачиваем файл Правила аренды для физ.лиц, проверяем, что автором является Свиридова Ольга", () ->{
-            File fileDownloadedPdf = $(byXpath("//a[@href ='pravila_fl.pdf']")).download();
+            File fileDownloadedPdf = $(byXpath("//a[@href ='/f/retail/safes/pravila_fl.pdf']")).download();
             PDF content = new PDF(fileDownloadedPdf);
             assertThat(content.author).contains("Sviridova Olga");
         });
     }
 }
-//    File fileDownloadedPdf = $(byXpath("//a[@href ='/f/retail/safes/pravila_fl.pdf']")).download();
+
