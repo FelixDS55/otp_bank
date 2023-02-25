@@ -1,4 +1,4 @@
-package tests;
+package drivers;
 
 import helpers.Attach;
 import com.codeborne.selenide.Configuration;
@@ -10,7 +10,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static com.codeborne.selenide.Selectors.byTagAndText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
 public class BaseTest {
+    public final String BASE_URL = "https://www.otpbank.ru/";
+
     @BeforeAll
     static void setUp(){
         Selenide.clearBrowserCookies();
@@ -25,6 +31,8 @@ public class BaseTest {
 
     @BeforeEach
     void addListener() {
+        open(BASE_URL);
+        $(byTagAndText("strong", "Закрыть")).click();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
