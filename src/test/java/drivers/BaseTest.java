@@ -11,8 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selectors.byTagAndText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class BaseTest {
     public final String BASE_URL = "https://www.otpbank.ru/";
@@ -31,6 +30,7 @@ public class BaseTest {
 
     @BeforeEach
     void addListener() {
+        Selenide.clearBrowserCookies();
         open(BASE_URL);
         $(byTagAndText("strong", "Закрыть")).click();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
@@ -42,5 +42,6 @@ public class BaseTest {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+        Selenide.closeWebDriver();
     }
 }

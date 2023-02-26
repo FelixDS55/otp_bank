@@ -1,8 +1,8 @@
 package tests;
 
 import com.codeborne.pdftest.PDF;
-import com.codeborne.selenide.Condition;
 import drivers.BaseTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.ServicePage;
 
@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
@@ -18,6 +17,7 @@ import static io.qameta.allure.Allure.step;
 public class ServiceTest extends BaseTest {
     ServicePage servicePage = new ServicePage();
     @Test
+    @DisplayName("Проверка возможности выбрать опцию Аренда сейфов и скачать Правила аренды")
     void serviceTest(){
         step("Выбираем вкладку Услуги", () ->{
             servicePage.mainMenuSelect();

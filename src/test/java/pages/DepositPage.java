@@ -18,7 +18,6 @@ public class DepositPage {
 
     public DepositPage mainMenuSelect() {
         mainMenu.find(byText("Вклады и счета")).click();
-        ;
         return this;
     }
 

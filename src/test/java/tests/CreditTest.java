@@ -1,6 +1,7 @@
 package tests;
 
 import drivers.BaseTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.CreditPage;
 import static io.qameta.allure.Allure.step;
@@ -9,6 +10,7 @@ public class CreditTest extends BaseTest {
     CreditPage creditPage = new CreditPage();
 
     @Test
+    @DisplayName("Проверка работы кредитного калькулятора")
     void testService(){
         step("Выбираем в пункте меню Кредиты в выпадающем окне Кредит наличными", () ->{
             creditPage.setMainMenuCredit();
