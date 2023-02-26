@@ -32,6 +32,7 @@ public class OnLineCreditTest extends BaseTest {
     void testTopPanelList(String element){
         onLineCreditPage.setMainMenuCredit();
         onLineCreditPage.setSubMainMenuCredit();
-        $(".product-partners__categories").$(byText(element)).shouldBe(visible);
+//        $(".product-partners__categories").$(byText(element)).shouldBe(visible);
+        onLineCreditPage.checkPartnersProgramm(element);
     }
 }
