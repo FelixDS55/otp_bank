@@ -8,11 +8,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class OnLineCreditPage {
+    public static final String CHECK_URL = "https://mosautoshina.ru/";
     private final SelenideElement
             mainMenuItem = $(".main-menu__item"),
             mainSubMenu = $(".main-submenu"),
             partners = $(".product-partners__categories"),
-            ourPartners = $(".product-partners");
+            ourPartners = $(".product-partners"),
+            partnersCategories = $(".product-partners__categories"),
+            partnersList = $(".product-partners__list");
 
     public OnLineCreditPage setMainMenuCredit() {
         mainMenuItem.find(byText("Кредиты")).hover();
@@ -23,6 +26,7 @@ public class OnLineCreditPage {
         mainSubMenu.find(byText("Рассрочка online")).click();
         return this;
     }
+
     public OnLineCreditPage checkPartnersProgramm(String element) {
         partners.$(byText(element)).shouldBe(visible);
         return this;
@@ -30,6 +34,16 @@ public class OnLineCreditPage {
 
     public OnLineCreditPage checkPartners() {
         ourPartners.shouldHave(text("Наши партнеры"));
+        return this;
+    }
+
+    public OnLineCreditPage selectPartners() {
+        partnersCategories.find(byText("Автозапчасти, шины, диски")).click();
+        return this;
+    }
+
+    public OnLineCreditPage selectPartnersFromList() {
+        partnersList.find(byText("Мосавтошина")).click();
         return this;
     }
 }
