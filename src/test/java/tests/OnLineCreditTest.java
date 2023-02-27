@@ -11,7 +11,8 @@ import pages.OnLineCreditPage;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverConditions.url;
 import static io.qameta.allure.Allure.step;
 
 public class OnLineCreditTest extends BaseTest {
@@ -43,7 +44,10 @@ public class OnLineCreditTest extends BaseTest {
     @DisplayName("Проверка перехода на сайт партнера по сссылке")
     void checkFollowingLink(){
         step("Выбираем в пункте меню Кредиты в выпадающем окне Рассрочка online", () ->{
-
+            $(".product-partners__categories").find(byText("Автозапчасти, шины, диски")).click();
+            $(".product-partners__list").find(byText("Мосавтошина")).click();
+            switchTo().window(1);
+            webdriver().shouldHave(url("https://mosautoshina.ru/"));
         });
     }
 }
