@@ -95,6 +95,7 @@ allure {
   }
 }
 ```
-![Telegram](https://user-images.githubusercontent.com/81954013/211162995-dfe5de97-2582-4fc8-924b-5e5e693071e5.png)
+
+![Telegram](https://user-images.githubusercontent.com/81954013/222980577-77ab5f39-db11-4672-80d2-f6c55c1474ac.png)
 
 
