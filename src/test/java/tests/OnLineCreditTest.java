@@ -11,7 +11,7 @@ import pages.OnLineCreditPage;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 import static io.qameta.allure.Allure.step;
-import static pages.OnLineCreditPage.CHECK_URL;
+import static pages.OnLineCreditPage.*;
 
 public class OnLineCreditTest extends BaseTest {
     OnLineCreditPage onLineCreditPage = new OnLineCreditPage();
@@ -29,10 +29,8 @@ public class OnLineCreditTest extends BaseTest {
         });
 
     }
-    @ValueSource(strings = {"Автозапчасти, шины, диски", "Билеты и туры", "Бытовая техника/электроника/мобильные телефоны",
-            "Мебель и комплектующие", "Медицинские услуги и товары", "Образовательные услуги", "Одежда/Обувь/Сумки",
-            "Охота и рыбалка", "Спорт инвентарь", "Строительство домов/стройматериалы/сельхозтехника/тепло,водо, газооборудование",
-            "Тендерные услуги", "Шины и диски"})
+    @ValueSource(strings = {AUTO_PARTS, TICKETS, ELECTRONICS, FURNITURE, MEDICINE, EDUCATION, CLOTH, HUNTING_FISHING, SPORT, CONSTRUCTION,
+            TENDER, TYRES})
     @ParameterizedTest(name = "Проверка наличия в top-panel ссылок {0}")
     void testTopPanelList(String element){
         onLineCreditPage.checkPartnersProgramm(element);
