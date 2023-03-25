@@ -18,7 +18,6 @@ public class BaseTest {
 
     @BeforeAll
     static void setUp(){
-        Selenide.clearBrowserCookies();
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
@@ -26,11 +25,11 @@ public class BaseTest {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
+        Configuration.pageLoadStrategy = "eager";
     }
 
     @BeforeEach
     void addListener() {
-        Selenide.clearBrowserCookies();
         open(BASE_URL);
         $(byTagAndText("strong", "Закрыть")).click();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
