@@ -13,15 +13,7 @@
 <a href="https://www.jenkins.io/"><img src="/icons/Jenkins.png" width="50" height="50"  alt="Jenkins"/></a>
 </p>
 
-#### Gradle dependencies:
-```
-testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1',
-            'com.codeborne:selenide:6.10.3',
-            'io.qameta.allure:allure-selenide:2.20.1',
-            "org.slf4j:slf4j-simple:1.7.32",
-            'com.codeborne:pdf-test:1.5.0',
-            'org.assertj:assertj-core:3.23.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
 ```
 ## Подключение Allure
 #### build.gradle:
