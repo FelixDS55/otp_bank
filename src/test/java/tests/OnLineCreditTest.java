@@ -1,6 +1,5 @@
 package tests;
 
-import drivers.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ public class OnLineCreditTest extends BaseTest {
     OnLineCreditPage onLineCreditPage = new OnLineCreditPage();
 
     @BeforeEach
-    void setUp(){
+    void setUpCredit(){
         onLineCreditPage.setMainMenuCredit();
         onLineCreditPage.setSubMainMenuCredit();
     }

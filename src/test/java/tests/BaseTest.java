@@ -1,4 +1,4 @@
-package drivers;
+package tests;
 
 import helpers.Attach;
 import com.codeborne.selenide.Configuration;
@@ -18,14 +18,14 @@ public class BaseTest {
 
     @BeforeAll
     static void setUp(){
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("browserVersion", "100.0");
+        capabilities.setCapability("browserVersion", "111.0");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
-        Configuration.pageLoadStrategy = "eager";
+//        Configuration.pageLoadStrategy = "eager";
     }
 
     @BeforeEach

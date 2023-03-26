@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.CollectionCondition;
-import drivers.BaseTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

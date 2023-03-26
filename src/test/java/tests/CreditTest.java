@@ -1,10 +1,11 @@
 package tests;
 
-import drivers.BaseTest;
+import helpers.MainMenu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.CreditPage;
 import static io.qameta.allure.Allure.step;
+import static pages.CreditPage.*;
 
 public class CreditTest extends BaseTest {
     CreditPage creditPage = new CreditPage();
@@ -13,20 +14,20 @@ public class CreditTest extends BaseTest {
     @DisplayName("Проверка работы кредитного калькулятора")
     void testService(){
         step("Выбираем в пункте меню Кредиты в выпадающем окне Кредит наличными", () ->{
-            creditPage.setMainMenuCredit();
-            creditPage.setSubMainMenuCredit();
-            creditPage.shouldHaveTextMainPage();
+            creditPage.choiceMainMenuCredits(MainMenu.CREDITS.getTranslation());
+            creditPage.setSubMainMenuCredit(cashCredit);
+            creditPage.checkTextOnMainPage(credit);
         });
         step("Установка параметров кредитования", () ->{
-            creditPage.InputParameterCredit();
-            creditPage.InputParameterSumCredit();
-            creditPage.creditTerm();
+            creditPage.inputParameterCredit(salary);
+            creditPage.inputParameterSumCredit(sumCredit);
+            creditPage.setCreditTerm(yearsCredit);
         });
         step("Проверка правильности отражения условий кредитования",() ->{
-            creditPage.tableResult();
+            creditPage.tableResult(sumCredit, yearsCredit, percent, sumPercent);
         });
         step("Проверка заполнения полей заемщика",() ->{
-            creditPage.personalDataClient();
+            creditPage.setPersonalDataClient();
         });
     }
 }
